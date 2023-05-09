@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id = 'container'>
+        <form action="/choice" method="post">
+            <p>Select Rock Paper or Scissors</p>
+            <select name="our_choices" id="">
+                <option value="Rock">Rock</option>
+                <option value="Paper">Paper</option>
+                <option value="Scissors">Scissors</option>
+            </select>
+            <button>Submit</button>
+        </form>
+        <strong>Your Choice: {{session.our_choice}}</strong>
+        <br>
+        <strong>Opponent's Choice: {{session.opp_choice}}</strong>
+        <br>
+        <strong>Current Wins: {{session.wins}}</strong>
+        <br>
+        <strong>Current Losses: {{session.loses}}</strong>
+        <br>
+        <strong>Current Draws: {{session.draws}}</strong>
+        <br>
+        <strong>Last Result: {{session.result}}</strong>
+
+        <div id="activites">
+            {% for messages in session.outcomes %}
+            <p style="color: {{messages['color']}}">{{messages['message']}}</p>
+            {% endfor %}
+        </div>
+
+        <a href="/clear">Clear Session</a>
+    </div>
+</body>
+</html>
